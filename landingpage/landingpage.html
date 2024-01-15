@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #291401;
+        }
+
+        .container {
+            background-color: #291401;
+            padding: 150px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .container-fluide2 {
+            background-color: #291401;
+            padding: 300px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            width: 400px;
+            height: 350px;
+            margin: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card .image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card .image img {
+            width: 100%;
+            transition: .5s;
+        }
+
+        .card:hover .image img {
+            opacity: .5;
+            transform: translateX(30%);
+        }
+
+        .card .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            background: #291401;
+            transition: .5s;
+            transform-origin: left;
+            transform: perspective(2000px) rotateY(-90deg);
+        }
+
+        .card:hover .details {
+            transform: perspective(2000px) rotateY(0deg);
+        }
+
+        .card .details .center {
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .card .details .center h1 {
+            margin: 0;
+            padding: 0;
+            color: #291401;
+            line-height: 20px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .card .details .center h1 span {
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .card .details .center p {
+            margin: 10px 0;
+            padding: 0;
+            color: #262626;
+        }
+
+        .card .details {
+            margin: 10px auto 0;
+            padding: 0;
+            display: table;
+        }
+
+        .card .details {
+            list-style: none;
+            margin: 0 5px;
+            float: left;
+        }
+
+        .card .details a {
+            display: block;
+            background: #262626;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            transform: .5s;
+        }
+
+        .card .details a:hover {
+            background: #291401;
+        }
+
+        .card1 {
+            width: 150px;
+            height: 180px;
+            margin: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card1 img {
+            width: 100%;
+            height: 100%;
+            transition: .5s;
+        }
+
+        .card1:hover img {
+            opacity: .5;
+            transform: translateY(-20%);
+        }
+
+        .contact-container {
+            background-color: #6d4017;
+            padding: 50px 20px;
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .contact-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-container form .mb-3 {
+            width: 80%;
+        }
+
+        .contact-container form textarea {
+            resize: none;
+        }
+
+        .contact-container form button {
+            width: 30%;
+            margin-top: 10px;
+        }
+
+        .event-container {
+            background-color: #291401;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #291401;
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta-section {
+            background-color: #6d4017;
+            color: #ffffff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .row {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .form-label {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+  <!-- navbar section start -->
+   <div class="container1"> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Event Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+ <!-- navbar section start end-->
+ <!-- about section start -->
+<img src="img/img3.png" alt="Event Image" style="width: 100%; height: auto;">
+    <div class="event-container">
+    <div class="card">
+        
+            <div class="image">
+                <img src="img/card2.jpg"/>
+            </div>
+            <div class="details">
+              <div class="center">
+                <h1>CORPORATE EVENT<br><span>Parties</span></h1>
+                <p>Christmas Parties</p>
+                <p>Product Launches</p>
+                <p>Summer Parties</p>
+                <p>Meetings</p>
+              </div>
+            </div>
+          </div>
+    <div class="card">
+        <h2>About</h2>
+        <p align="justify" style="margin-left:10px; margin-right: 10px;">
+        An event management system streamlines the planning and execution of events, ensuring seamless coordination. From conferences to celebrations, it centralizes tasks like scheduling, budgeting, and participant engagement. With real-time updates and efficient communication, it enhances productivity, delivering memorable experiences for organizers and attendees alike.
+          it centralizes tasks like scheduling, budgeting, and participant engagement. With real-time updates and efficient communication, it enhances productivity, delivering memorable experiences for organizers and attendees alike.
+    </p>
+    </div>
+    <div class="card">
+        
+        <div class="image">
+          <img src="img/card2.jpg"/>
+        </div>
+        <div class="details">
+          <div class="center">
+            <h1>PRIVATE EVENT<br><span>Parties</span></h1>
+                <p>Christmas Parties</p>
+                <p>Product Launches</p>
+                <p>Summer Parties</p>
+                <p>Meetings</p>
+           
+          </div>
+        </div>
+      </div>
+</div>
+<!-- about section start end-->
+    <!-- event image section start -->
+        <div class="cta-section">
+            <h2>TYPE OF PARTIES & EVENT</h2>
+            <p>Bithday/Anniversary/kitty/Pink party</p>
+            <a href="tel:+1123456789" class="cta-btn">Call Us Now</a>
+        </div>
+            
+            <div class="event-container">
+                <div class="card1">
+                    <img src="img/c1.png"/>
+                </div>
+                <div class="card1">
+                    <img src="img/c2.png"/>
+                </div>
+                <div class="card1">
+                    <img src="img/c3.png"/> 
+                </div>
+                <div class="card1">
+                    <img src="img/c4.png"/>
+                </div>
+                <div class="card1">
+                    <img src="img/c2.png"/>
+                </div>
+                <div class="card1">
+                    <img src="img/c1.png"/>
+                </div>
+                
+            </div>
+             <!-- event image section start -->
+             <!-- contact section start -->
+           <div class="contact-container">
+                <h2>Contact Us</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                       
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28837.374423888927!2d86.42813581083988!3d25.382313699999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1eefdde213959%3A0x71d00f757354e784!2sHotel%20Karn%20Vihar!5e0!3m2!1sen!2sin!4v1705323007880!5m2!1sen!2sin" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        
+             <!-- contact section start end-->
+             <!-- footer section start -->
+            <div class="footer">
+                &copy; Copyright by Simran
+            </div>
+             <!-- footer section end -->
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>            
+</html>
